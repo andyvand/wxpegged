@@ -1,0 +1,36 @@
+#include "windows.h"
+
+#ifdef EMBED_MANIFEST
+1 RT_MANIFEST pegged.manifest
+#endif
+
+100 ICON pegged.ico
+
+#if defined(_WIN32_WCE) || defined(UNDER_CE)
+#include <winver.h>
+#else
+#include <ntverp.h>
+#endif
+
+#define	VER_FILETYPE	VFT_APP
+#define	VER_FILESUBTYPE	VFT2_UNKNOWN
+#define VER_FILEDESCRIPTION_STR     TEXT("Entertainment Pack Pegged Game (wxWidgets port)")
+#define VER_INTERNALNAME_STR        TEXT("pegged\0")
+
+#ifndef VER_FILEFLAGSMASK
+#define VER_FILEFLAGSMASK           0x3F
+#endif
+
+#ifndef VER_FILEFLAGS
+#define VER_FILEFLAGS               VS_FFI_FILEFLAGSMASK
+#endif
+
+#ifndef VER_FILEOS
+#define VER_FILEOS                  VOS__WINDOWS32
+#endif
+
+#ifndef VER_COMPANYNAME_STR
+#define VER_COMPANYNAME_STR         TEXT("Microsoft")
+#endif
+
+#include "common.ver"

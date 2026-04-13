@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=wxpegged
+GenericName=Microsoft Pegged
+Comment=Microsoft Pegged
+Exec=wxpegged %f
+Icon=wxpegged
+Categories=Game;Board;
+Keywords=Board;Microsoft;Pegged;

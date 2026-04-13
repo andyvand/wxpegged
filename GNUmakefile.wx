@@ -1,0 +1,33 @@
+# Portable GNU Makefile for the wxWidgets port of Pegged.
+# Works on Linux, macOS, and MSYS2/MinGW (any platform with wx-config).
+#
+#   make -f GNUmakefile.wx              # build
+#   make -f GNUmakefile.wx run          # build & run
+#   make -f GNUmakefile.wx clean
+
+WX_CONFIG ?= wx-config
+
+CXX      ?= c++
+CXXFLAGS ?= -O2 -Wall -Wextra -std=c++17
+WX_CXX    := $(shell $(WX_CONFIG) --cxxflags)
+WX_LIBS   := $(shell $(WX_CONFIG) --libs core,base)
+
+TARGET := wxpegged
+SRCS   := wxpegged.cpp
+OBJS   := $(SRCS:.cpp=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(WX_LIBS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(WX_CXX) -c $< -o $@
+
+run: $(TARGET)
+	./$(TARGET)
+
+clean:
+	rm -f $(OBJS) $(TARGET)
+
+.PHONY: all run clean
