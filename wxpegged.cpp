@@ -541,8 +541,8 @@ void PeggedBoard::ComputeMetrics()
     m_yEdge    = wxMax(1, m_yBlock / 4);
     m_xShadow  = wxMax(1, m_xBlock / 10);
     m_yShadow  = wxMax(1, m_yBlock / 10);
-    m_winxEdge = m_xBlock;
-    m_winyEdge = m_yBlock;
+    m_winxEdge = (sz.GetWidth()  - DIVISIONS * m_xBlock) / 2;
+    m_winyEdge = (sz.GetHeight() - DIVISIONS * m_yBlock) / 2;
 }
 
 bool PeggedBoard::CellFromPixel(int px, int py, int& cx, int& cy) const
