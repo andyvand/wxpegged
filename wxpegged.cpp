@@ -16,6 +16,15 @@
 #include <wx/iconbndl.h>
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
+#include <wx/utils.h>
+
+#ifdef __WXMSW__
+    #include <wx/msw/helpchm.h>
+#endif
+
+#ifdef __WXMAC__
+extern "C" void ShowMacHelpBook(const char* anchor);
+#endif
 
 // ---------------------------------------------------------------------------
 // IDs and pattern enum
@@ -366,6 +375,48 @@ void PeggedFrame::OnUpdateUndo(wxUpdateUIEvent& evt)
 
 void PeggedFrame::OnHowTo(wxCommandEvent&)
 {
+#if defined(__WXMSW__)
+    // Search next to the .exe, in a share/doc sibling dir, and finally in
+    // the bundle's Resources dir (wx maps that to the exe dir on Windows).
+    wxFileName chm(wxStandardPaths::Get().GetExecutablePath());
+    chm.SetFullName(wxT("wxpegged.chm"));
+    if (!chm.FileExists()) {
+        wxFileName alt(wxStandardPaths::Get().GetExecutablePath());
+        alt.RemoveLastDir();
+        alt.AppendDir(wxT("share"));
+        alt.AppendDir(wxT("doc"));
+        alt.AppendDir(wxT("wxpegged"));
+        alt.SetFullName(wxT("wxpegged.chm"));
+        if (alt.FileExists()) chm = alt;
+    }
+    if (chm.FileExists()) {
+        static wxCHMHelpController s_chm;
+        s_chm.Initialize(chm.GetFullPath());
+        s_chm.DisplayContents();
+        return;
+    }
+#elif defined(__WXMAC__)
+    ShowMacHelpBook(nullptr);
+    return;
+#elif defined(__WXGTK__) || defined(__UNIX__)
+    // On Linux/BSD, open the installed man page in a terminal. Try a few
+    // common terminal emulators; if none are found, fall back to the
+    // message box below.
+    const wxString cmd = wxT("man 6 wxpegged");
+    static const wxChar* const terms[] = {
+        wxT("x-terminal-emulator -e "),
+        wxT("xdg-terminal "),
+        wxT("gnome-terminal -- sh -c '"),
+        wxT("konsole -e "),
+        wxT("xterm -e ")
+    };
+    for (size_t i = 0; i < WXSIZEOF(terms); ++i) {
+        wxString full = terms[i] + cmd;
+        if (wxString(terms[i]).EndsWith(wxT("'"))) full += wxT("; read'");
+        if (wxExecute(full, wxEXEC_ASYNC) > 0) return;
+    }
+#endif
+
     wxMessageBox(
         wxT("Pegged is a peg-jumping solitaire game.\n\n")
         wxT("Drag a peg over an adjacent peg and drop it into the empty\n")

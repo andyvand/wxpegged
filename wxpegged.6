@@ -1,0 +1,135 @@
+.\" Manpage for wxpegged.
+.\" Translated from the CHM help book (wxpeggedchm/*.htm).
+.TH WXPEGGED 6 "April 2026" "wxpegged 1.0" "Games"
+.SH NAME
+wxpegged \- a peg-solitaire game (wxWidgets port of Pegged)
+.SH SYNOPSIS
+.B wxpegged
+.SH DESCRIPTION
+.B wxpegged
+is a portable wxWidgets port of the Microsoft Entertainment Pack game
+\fBPegged\fR (also known as "Jump" or "Peg Solitaire"). It is a game of
+logic with origins dating back to the 19th Century, reputedly invented
+by a prisoner of the Bastille and popular throughout Europe in the
+1800s, where it was played by moving pegs in a wooden board.
+.PP
+The playing area is a plus-shaped grid of holes. At the start of a game
+the holes contain a configuration of pegs. A peg is moved by jumping it
+across an adjacent peg into the open hole on the other side. Only
+horizontal and vertical jumps are allowed; diagonal jumps are illegal.
+The jumped peg is automatically removed from the board.
+.PP
+The object of the game is to jump pegs so that only one remains.
+Finishing with the last peg in the center of the board is considered
+the "coolest" result, but any finish with a single peg left is a win.
+.SH PLAYING THE GAME
+.TP
+.B Selecting a board type
+Choose
+.BR Cross ,
+.BR Plus ,
+.BR Fireplace ,
+.BR "Up Arrow" ,
+.BR Pyramid ,
+.BR Diamond ,
+or
+.B Solitaire
+from the
+.B Options
+menu. Each board presents a different starting peg configuration of
+increasing difficulty.
+.TP
+.B Starting a new game
+Choose
+.B New
+from the
+.B Game
+menu, or press
+.BR F2 .
+.TP
+.B Jumping a peg
+Press the left mouse button on a peg, drag it across an adjacent peg,
+and release it on the empty hole on the far side. If the move is legal
+the jumped peg is removed; otherwise the dragged peg snaps back.
+.SH RULES OF THE GAME
+.IP 1. 3
+The playing area is a plus-shaped grid of holes. At the beginning of
+each game a particular peg configuration is placed in the area.
+.IP 2. 3
+A peg is removed by jumping another peg over it. Only certain jumps
+are legal: jumps must be strictly horizontal or vertical, one peg at a
+time, over an occupied hole into an empty hole directly on the other
+side.
+.IP 3. 3
+The game is over when no legal jumps remain. If only one peg is left
+on the board, you win.
+.SH GAME MENU COMMANDS
+.TP
+.B New
+Starts a new game of
+.BR wxpegged .
+Can be invoked at any time, including mid-game; keyboard shortcut
+.BR F2 .
+.TP
+.B Backup
+Backs up (undoes) one jump. You can continue to back up until the
+initial peg configuration is reached. Keyboard shortcut
+.B Ctrl+Z
+(or
+.BR Backspace ).
+.TP
+.B Exit
+Exits
+.BR wxpegged .
+Can be invoked at any time, including mid-game.
+.SH OPTIONS MENU COMMANDS
+The Options menu selects the initial configuration of the pegs. Pick
+one of:
+.BR Cross ", " Plus ", " Fireplace ", " "Up Arrow" ", " Pyramid ", "
+.BR Diamond ", or " Solitaire .
+Each presents a distinct challenge; the last peg's winning position is
+the center hole.
+.SH HELP MENU COMMANDS
+.TP
+.B How to Play
+Opens this help. On Linux the man page is displayed; on Windows the
+bundled \fIwxpegged.chm\fR is opened; on macOS the bundled
+\fIPegged.help\fR book is shown. Keyboard shortcut
+.BR F1 .
+.TP
+.B About Pegged...
+Shows the About dialog with version and copyright information.
+.SH STRATEGY AND HINTS
+Start with the simplest puzzle,
+.BR Cross ,
+then solve each of the other puzzles in the Options menu from top to
+bottom. The puzzles get progressively harder, but each one provides
+insights into how the hardest puzzle,
+.BR Solitaire ,
+may be solved. Working back from the desired final-peg position is
+often useful: a jump played forwards from (a) over (b) into (c) is the
+mirror of one played backwards from (c) over (b) into (a).
+.SH FILES
+.TP
+.I ~/.config/Pegged/Pegged.conf
+Persisted preferences (last-selected board pattern) on XDG systems.
+.TP
+.I /usr/share/applications/wxpegged.desktop
+Desktop launcher entry.
+.TP
+.I /usr/share/metainfo/wxpegged.metainfo.xml
+AppStream metadata.
+.TP
+.I /usr/share/icons/hicolor/*/apps/wxpegged.png
+Application icons in the hicolor theme.
+.SH SEE ALSO
+.BR xjump (6),
+.BR xboard (6)
+.SH AUTHORS
+Original Win32 game: Mike Blaylock, 1989\[en]1990.
+.br
+wxWidgets port: 2026.
+.SH COPYRIGHT
+Copyright \(co 1989\[en]1990 Mike Blaylock.
+.br
+wxWidgets port copyright \(co 2026.

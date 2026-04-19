@@ -1,0 +1,7 @@
+/Users/andyvand/Downloads/wxpegged/buildmac/CMakeFiles/wxpegged.dir
+/Users/andyvand/Downloads/wxpegged/buildmac/CMakeFiles/edit_cache.dir
+/Users/andyvand/Downloads/wxpegged/buildmac/CMakeFiles/rebuild_cache.dir
+/Users/andyvand/Downloads/wxpegged/buildmac/CMakeFiles/list_install_components.dir
+/Users/andyvand/Downloads/wxpegged/buildmac/CMakeFiles/install.dir
+/Users/andyvand/Downloads/wxpegged/buildmac/CMakeFiles/install/local.dir
+/Users/andyvand/Downloads/wxpegged/buildmac/CMakeFiles/install/strip.dir
