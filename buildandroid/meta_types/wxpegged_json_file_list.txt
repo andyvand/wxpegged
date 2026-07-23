@@ -1,0 +1,1 @@
+/Users/andyvand/Downloads/wxpegged/buildandroid/wxpegged_autogen/include/qtpegged.moc.json

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "org.pegged.pegged-release-12:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "org.pegged.pegged-android-build-13:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "org.pegged.pegged-release-12:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "org.pegged.pegged-android-build-13:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "org.pegged.pegged-release-12:/xml_qtprovider_paths.xml.flat",
+        "source": "org.pegged.pegged-android-build-13:/xml/qtprovider_paths.xml"
+    },
+    {
+        "merged": "org.pegged.pegged-release-12:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "org.pegged.pegged-android-build-13:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "org.pegged.pegged-release-12:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "org.pegged.pegged-android-build-13:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "org.pegged.pegged-release-12:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "org.pegged.pegged-android-build-13:/mipmap-xxhdpi/ic_launcher.png"
+    }
+]

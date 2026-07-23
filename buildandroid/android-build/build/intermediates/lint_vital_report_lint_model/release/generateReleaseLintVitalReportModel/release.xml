@@ -1,0 +1,32 @@
+<variant
+    name="release"
+    package="org.pegged.pegged"
+    minSdkVersion="28"
+    targetSdkVersion="34"
+    mergedManifest="build/intermediates/merged_manifest/release/processReleaseMainManifest/AndroidManifest.xml"
+    manifestMergeReport="build/outputs/logs/manifest-merger-release-report.txt"
+    proguardFiles="build/intermediates/default_proguard_files/global/proguard-android.txt-8.8.0"
+    resourceConfigurations="en"
+    partialResultsDir="build/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+    <sourceProvider
+        manifests="AndroidManifest.xml"
+        javaDirectories="/usr/local/qt-6.9.3-android-arm64/src/android/java/src:src:java:src/release/java:src/main/java:src/main/kotlin:src/release/kotlin"
+        resDirectories="/usr/local/qt-6.9.3-android-arm64/src/android/java/res:res:src/release/res"
+        assetsDirectories="assets:src/release/assets"/>
+  </sourceProviders>
+  <testSourceProviders>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <artifact
+      classOutputs="build/intermediates/javac/release/compileReleaseJavaWithJavac/classes:build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/release/processReleaseResources/R.jar"
+      type="MAIN"
+      applicationId="org.pegged.pegged"
+      generatedSourceFolders="build/generated/ap_generated_sources/release/out"
+      generatedResourceFolders="build/generated/res/resValues/release"
+      desugaredMethodsFiles="/Users/andyvand/.gradle/caches/8.12/transforms/a7b4d238cdc8aac0aa84a367ab690bbf/transformed/D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>

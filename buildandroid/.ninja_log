@@ -1,0 +1,22 @@
+# ninja log v7
+3	644	1784810480537325646	wxpegged_autogen/timestamp	105c4ed556a012ca
+3	644	1784810480537325646	wxpegged_autogen/mocs_compilation.cpp	105c4ed556a012ca
+3	644	1784810480537325646	/Users/andyvand/Downloads/wxpegged/buildandroid/wxpegged_autogen/timestamp	105c4ed556a012ca
+3	644	1784810480537325646	/Users/andyvand/Downloads/wxpegged/buildandroid/wxpegged_autogen/mocs_compilation.cpp	105c4ed556a012ca
+645	656	1784810480562997694	meta_types/wxpegged_json_file_list.txt	f2aba153d6e6f736
+645	656	1784810480562997694	meta_types/wxpegged_json_file_list.txt.timestamp	f2aba153d6e6f736
+645	656	1784810480562997694	/Users/andyvand/Downloads/wxpegged/buildandroid/meta_types/wxpegged_json_file_list.txt	f2aba153d6e6f736
+645	656	1784810480562997694	/Users/andyvand/Downloads/wxpegged/buildandroid/meta_types/wxpegged_json_file_list.txt.timestamp	f2aba153d6e6f736
+656	669	1784810480576163000	meta_types/qt6wxpegged_release_metatypes.json.gen	2145536e664b8119
+656	669	1784810480576163000	meta_types/qt6wxpegged_release_metatypes.json	2145536e664b8119
+656	669	1784810480576163000	/Users/andyvand/Downloads/wxpegged/buildandroid/meta_types/qt6wxpegged_release_metatypes.json.gen	2145536e664b8119
+656	669	1784810480576163000	/Users/andyvand/Downloads/wxpegged/buildandroid/meta_types/qt6wxpegged_release_metatypes.json	2145536e664b8119
+669	737	1784810480576803649	CMakeFiles/wxpegged.dir/wxpegged_autogen/mocs_compilation.cpp.o	ddb27626aca62543
+669	1680	1784810480576954815	CMakeFiles/wxpegged.dir/qtpegged.cpp.o	5b5802dbe9a14ecc
+1681	1876	1784810481588440678	libwxpegged_arm64-v8a.so	6816819c1e8e29f7
+1876	1885	1784810481783722911	CMakeFiles/wxpegged_prepare_apk_dir	5ce0f1d2c088b0d7
+1876	1885	1784810481783722911	/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_prepare_apk_dir	5ce0f1d2c088b0d7
+7	20	1784810526511024154	CMakeFiles/wxpegged_prepare_apk_dir	5ce0f1d2c088b0d7
+7	20	1784810526511024154	/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_prepare_apk_dir	5ce0f1d2c088b0d7
+20	6768	1784810532399343255	android-build/wxpegged.apk	353fde137ed95dde
+20	6768	1784810532399343255	/Users/andyvand/Downloads/wxpegged/buildandroid/android-build/wxpegged.apk	353fde137ed95dde

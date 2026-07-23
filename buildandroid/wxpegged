@@ -1,0 +1,8 @@
+#!/bin/sh
+
+/usr/local/qt-6.9.3/libexec/qt-android-runner.py \
+    --adb "/Users/andyvand/Library/Android/sdk/platform-tools/adb" \
+    --build-path "/Users/andyvand/Downloads/wxpegged/buildandroid/android-build" \
+    --apk "/Users/andyvand/Downloads/wxpegged/buildandroid/android-build/wxpegged.apk" \
+    $@
+

@@ -1,0 +1,16 @@
+org.pegged.pegged-annotation-experimental-1.4.1-0 /Users/andyvand/.gradle/caches/8.12/transforms/069a9a438c5dc018f300b7fec8e6db3b/transformed/annotation-experimental-1.4.1/res
+org.pegged.pegged-tracing-1.2.0-1 /Users/andyvand/.gradle/caches/8.12/transforms/40ab35f05645c03df0864921cec21236/transformed/tracing-1.2.0/res
+org.pegged.pegged-core-runtime-2.2.0-2 /Users/andyvand/.gradle/caches/8.12/transforms/5c61a7fe28780313b8dfd1000b17457b/transformed/core-runtime-2.2.0/res
+org.pegged.pegged-startup-runtime-1.1.1-3 /Users/andyvand/.gradle/caches/8.12/transforms/66ef5ded101de47073ce566a6d2e608d/transformed/startup-runtime-1.1.1/res
+org.pegged.pegged-core-viewtree-1.0.0-4 /Users/andyvand/.gradle/caches/8.12/transforms/6dbf51755f6828c54a9a4fe74a6c5fef/transformed/core-viewtree-1.0.0/res
+org.pegged.pegged-lifecycle-runtime-2.6.2-5 /Users/andyvand/.gradle/caches/8.12/transforms/97d804ade5479cbdee6d72a2d6093ca6/transformed/lifecycle-runtime-2.6.2/res
+org.pegged.pegged-profileinstaller-1.3.0-6 /Users/andyvand/.gradle/caches/8.12/transforms/b69fddadd08775edbdbfcc16b1ca3b40/transformed/profileinstaller-1.3.0/res
+org.pegged.pegged-core-1.16.0-7 /Users/andyvand/.gradle/caches/8.12/transforms/cd87e00273f71ab1b50eeca4d086fdcf/transformed/core-1.16.0/res
+org.pegged.pegged-pngs-8 /Users/andyvand/Downloads/wxpegged/buildandroid/android-build/build/generated/res/pngs/release
+org.pegged.pegged-resValues-9 /Users/andyvand/Downloads/wxpegged/buildandroid/android-build/build/generated/res/resValues/release
+org.pegged.pegged-packageReleaseResources-10 /Users/andyvand/Downloads/wxpegged/buildandroid/android-build/build/intermediates/incremental/release/packageReleaseResources/merged.dir
+org.pegged.pegged-packageReleaseResources-11 /Users/andyvand/Downloads/wxpegged/buildandroid/android-build/build/intermediates/incremental/release/packageReleaseResources/stripped.dir
+org.pegged.pegged-release-12 /Users/andyvand/Downloads/wxpegged/buildandroid/android-build/build/intermediates/merged_res/release/mergeReleaseResources
+org.pegged.pegged-android-build-13 /Users/andyvand/Downloads/wxpegged/buildandroid/android-build/res
+org.pegged.pegged-release-14 /Users/andyvand/Downloads/wxpegged/buildandroid/android-build/src/release/res
+org.pegged.pegged-java-15 /usr/local/qt-6.9.3-android-arm64/src/android/java/res

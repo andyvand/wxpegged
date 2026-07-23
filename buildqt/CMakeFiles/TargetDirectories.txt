@@ -1,0 +1,9 @@
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/wxpegged.dir
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/edit_cache.dir
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/rebuild_cache.dir
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/list_install_components.dir
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/install.dir
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/install/local.dir
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/install/strip.dir
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/wxpegged_autogen_timestamp_deps.dir
+/Users/andyvand/Downloads/wxpegged/buildqt/CMakeFiles/wxpegged_autogen.dir

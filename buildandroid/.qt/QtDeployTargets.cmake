@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_wxpegged_FILE /Users/andyvand/Downloads/wxpegged/buildandroid/libwxpegged_arm64-v8a.so)
+set(__QT_DEPLOY_TARGET_wxpegged_TYPE MODULE_LIBRARY)

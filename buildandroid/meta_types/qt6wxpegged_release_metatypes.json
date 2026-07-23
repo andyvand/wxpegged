@@ -1,0 +1,78 @@
+[
+    {
+        "classes": [
+            {
+                "className": "PeggedBoard",
+                "lineNumber": 63,
+                "object": true,
+                "qualifiedClassName": "PeggedBoard",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "name": "stateChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QWidget"
+                    }
+                ]
+            },
+            {
+                "className": "PeggedWindow",
+                "lineNumber": 127,
+                "object": true,
+                "qualifiedClassName": "PeggedWindow",
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 0,
+                        "name": "OnNewGame",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 1,
+                        "name": "OnUndo",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 2,
+                        "name": "OnAbout",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 3,
+                        "name": "OnHowTo",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 4,
+                        "name": "OnPattern",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QMainWindow"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qtpegged.cpp",
+        "outputRevision": 69
+    }
+]

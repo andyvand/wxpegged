@@ -1,0 +1,17 @@
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/apk.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/aab.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/aar.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_other_files.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_copy_apk_dependencies.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/_qt_internal_apk_dependencies.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/apk_all.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/qt_internal_plugins.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_prepare_apk_dir.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_make_apk.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_make_aar.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_make_aab.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/edit_cache.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/rebuild_cache.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_autogen_timestamp_deps.dir
+/Users/andyvand/Downloads/wxpegged/buildandroid/CMakeFiles/wxpegged_autogen.dir

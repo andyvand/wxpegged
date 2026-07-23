@@ -1,0 +1,8 @@
+# ninja log v7
+2	502	1784810431422200435	wxpegged_autogen/timestamp	4edffc6c412b22c2
+2	502	1784810431422200435	wxpegged_autogen/mocs_compilation.cpp	4edffc6c412b22c2
+2	502	1784810431422200435	/Users/andyvand/Downloads/wxpegged/buildqt/wxpegged_autogen/timestamp	4edffc6c412b22c2
+2	502	1784810431422200435	/Users/andyvand/Downloads/wxpegged/buildqt/wxpegged_autogen/mocs_compilation.cpp	4edffc6c412b22c2
+504	551	1784810431437711254	CMakeFiles/wxpegged.dir/wxpegged_autogen/mocs_compilation.cpp.o	c88df466108da785
+504	1237	1784810431437875087	CMakeFiles/wxpegged.dir/qtpegged.cpp.o	ceaee61b4f58044e
+1238	1403	1784810432172586686	wxpegged.app/Contents/MacOS/wxpegged	d2bf662b5ed78b1f
