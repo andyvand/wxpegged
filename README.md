@@ -22,6 +22,10 @@ and runs unchanged on Linux (GTK), macOS (Cocoa), and Windows (MSW).
 
 ![](/screenshots/wxpegged_linux.png)
 
+- Android:
+
+![](/screenshots/wxpegged-android.jpg)
+
 ## How to play
 
 Drag a peg over an adjacent peg and drop it into the empty hole on the
