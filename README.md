@@ -26,6 +26,10 @@ and runs unchanged on Linux (GTK), macOS (Cocoa), and Windows (MSW).
 
 ![](/screenshots/wxpegged-android.jpg)
 
+- Classic Mac OS (68k, System 7):
+
+![](/screenshots/wxpegged_MacOS_m68k.png)
+
 ## How to play
 
 Drag a peg over an adjacent peg and drop it into the empty hole on the
@@ -77,6 +81,38 @@ On macOS, CMake produces `wxpegged.app` with `pegged.icns` wired in via
 `MACOSX_BUNDLE_ICON_FILE`. On Windows, `pegged.rc` compiles in the
 version info and `pegged.ico`.
 
+### Classic Mac OS (Retro68, 68k + PowerPC)
+
+Built with the [Retro68](https://github.com/autc04/Retro68) toolchain
+(installed in `/opt/retro68`) and its wxRetro68 port of wxWidgets:
+
+```sh
+retro68/build.sh            # or: RETRO68=/path/to/retro68 retro68/build.sh out-dir
+```
+
+This builds the 68k and PowerPC applications and merges them into a single
+fat (universal) application, `build-retro68/Pegged.dsk` (an HFS disk image
+for Basilisk II, SheepShaver, QEMU or a real Mac) and
+`build-retro68/Pegged.bin` (MacBinary). The single-architecture builds are
+in `build-retro68/m68k` and `build-retro68/ppc`. It needs System 7 or later
+with 32-bit QuickDraw. The window is sized to fit the screen (down to
+512x342), and Help shows the help pages in a window of its own. The classic
+Mac icons in `retro68/icons.r` are generated from `sizes/` by
+`retro68/make-icons.py`.
+
+To test unattended in Basilisk II, build with tracing and run it from a copy
+of a System 7/8 boot disk (`BOOT_DISK`, default `~/MacROM/HD.img`; the
+original is not modified):
+
+```sh
+WXPEGGED_CMAKE_ARGS=-DWXPEGGED_TRACE=ON retro68/build.sh build-trace
+retro68/run-basilisk.sh build-trace/Pegged.bin
+```
+
+The trace build logs its startup to `wxtest.log` and shuts the Mac down 25
+seconds after its window appears; the script prints the log and keeps
+screenshots in its work directory.
+
 ### GNU make (Unix / macOS / MSYS2)
 
 Requires `wx-config` on `PATH`:
@@ -102,6 +138,10 @@ pegged.iconset/       source PNGs for pegged.icns
 sizes/<NxN>/apps/     hicolor PNG icons installed on Linux
 wxpegged.desktop      XDG desktop entry
 wxpegged.metainfo.xml AppStream metadata
+retro68/              classic Mac OS (Retro68) build: build.sh, resources,
+                      help window, icon generator, emulator test scripts
+cmake/                Retro68 application packaging (CMake)
+bin2c.c               embeds the help pages in the classic Mac OS build
 ```
 
 The app icon is loaded at runtime by `LoadAppIcons()` in `wxpegged.cpp`,

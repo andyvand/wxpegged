@@ -1,8 +1,121 @@
 cmake_minimum_required(VERSION 3.16)
-project(wxpegged CXX)
+project(wxpegged C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+if(CMAKE_SYSTEM_NAME MATCHES "^Retro(68|PPC)$")
+    # =======================================================================
+    #  Classic Mac OS (Retro68): 68k (Retro68) or PowerPC (RetroPPC)
+    #
+    #  Produces Pegged.bin (MacBinary), Pegged.APPL and Pegged.dsk (an HFS
+    #  disk image) for the one architecture; retro68/build.sh builds both and
+    #  merges them into a single fat (68k + PowerPC) application.
+    # =======================================================================
+    list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+    include(HostCompile)
+
+    set(BIN2C ${CMAKE_BINARY_DIR}/bin2c)
+    host_compile(${CMAKE_CURRENT_SOURCE_DIR}/bin2c.c ${BIN2C})
+
+    # The HTML help (the macOS help book's pages), zipped and embedded, shown
+    # in a wxHtmlWindow: classic Mac OS has no browser to hand it to.
+    set(HELP_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Pegged.help/Contents/Resources/en.lproj)
+    file(GLOB HELP_FILES RELATIVE ${HELP_SRC_DIR}
+         ${HELP_SRC_DIR}/*.htm ${HELP_SRC_DIR}/*.html
+         ${HELP_SRC_DIR}/img/*.png ${HELP_SRC_DIR}/lib/*.png)
+    list(SORT HELP_FILES)
+    set(HELP_DEPS)
+    foreach(_f ${HELP_FILES})
+        list(APPEND HELP_DEPS ${HELP_SRC_DIR}/${_f})
+    endforeach()
+    set(HELP_ZIP ${CMAKE_CURRENT_BINARY_DIR}/help.zip)
+    add_custom_command(
+        OUTPUT ${HELP_ZIP}
+        COMMAND ${CMAKE_COMMAND} -E tar cf ${HELP_ZIP} --format=zip ${HELP_FILES}
+        WORKING_DIRECTORY ${HELP_SRC_DIR}
+        DEPENDS ${HELP_DEPS}
+        COMMENT "Zipping Pegged Help (Retro68)")
+    set(HELP_DATA_H ${CMAKE_CURRENT_BINARY_DIR}/help_data.h)
+    add_custom_command(
+        OUTPUT ${HELP_DATA_H}
+        COMMAND ${BIN2C} ${HELP_ZIP} ${HELP_DATA_H} help_data
+        DEPENDS ${HELP_ZIP} ${BIN2C}
+        COMMENT "Embedding Pegged Help as C array (Retro68)")
+
+    # wxRetro68 (wxUniversal on QuickDraw) from the sysroot's wx-config, never
+    # the host's: FindwxWidgets is unreliable when cross-compiling.
+    if(NOT wxWidgets_CONFIG_EXECUTABLE)
+        set(wxWidgets_CONFIG_EXECUTABLE ${CMAKE_SYSTEM_PREFIX_PATH}/bin/wx-config)
+    endif()
+    set(WX_COMPONENTS html core base)
+    execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --cxxflags ${WX_COMPONENTS}
+        OUTPUT_VARIABLE WX_CXXFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE RESULT_VARIABLE _wxr1)
+    execute_process(COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --libs ${WX_COMPONENTS}
+        OUTPUT_VARIABLE WX_LIBS OUTPUT_STRIP_TRAILING_WHITESPACE RESULT_VARIABLE _wxr2)
+    if(_wxr1 OR _wxr2)
+        message(FATAL_ERROR "wx-config failed: ${wxWidgets_CONFIG_EXECUTABLE}")
+    endif()
+    separate_arguments(WX_CXXFLAGS_LIST NATIVE_COMMAND "${WX_CXXFLAGS}")
+    separate_arguments(WX_LIBS_LIST NATIVE_COMMAND "${WX_LIBS}")
+
+    add_executable(wxpegged
+        wxpegged.cpp
+        retro68/help_retro68.cpp
+        ${HELP_DATA_H})
+    target_compile_options(wxpegged PRIVATE ${WX_CXXFLAGS_LIST}
+        -ffunction-sections -fdata-sections)
+    target_include_directories(wxpegged PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+    target_link_options(wxpegged PRIVATE -Wl,--gc-sections)
+    target_link_libraries(wxpegged PRIVATE
+        -Wl,--start-group ${WX_LIBS_LIST} -Wl,--end-group)
+
+    # Relink when the wx libraries change (wx-config gives flags, so CMake
+    # does not know about them): the full paths, plus -l names found in the
+    # -L directories.
+    set(WX_LIB_FILES)
+    set(_wx_lib_dirs)
+    foreach(_arg ${WX_LIBS_LIST})
+        if(_arg MATCHES "^-L(.+)$")
+            list(APPEND _wx_lib_dirs "${CMAKE_MATCH_1}")
+        elseif(_arg MATCHES "\\.a$" AND EXISTS "${_arg}")
+            list(APPEND WX_LIB_FILES "${_arg}")
+        elseif(_arg MATCHES "^-l(.+)$")
+            foreach(_dir ${_wx_lib_dirs})
+                if(EXISTS "${_dir}/lib${CMAKE_MATCH_1}.a")
+                    list(APPEND WX_LIB_FILES "${_dir}/lib${CMAKE_MATCH_1}.a")
+                    break()
+                endif()
+            endforeach()
+        endif()
+    endforeach()
+    list(REMOVE_DUPLICATES WX_LIB_FILES)
+    set_property(TARGET wxpegged APPEND PROPERTY LINK_DEPENDS ${WX_LIB_FILES})
+
+    # -DWXPEGGED_TRACE=ON: log startup to "wxtest.log" next to the
+    # application and shut the Mac down once it is up, for unattended
+    # emulator runs (retro68/run-basilisk.sh).
+    option(WXPEGGED_TRACE "Trace startup to wxtest.log (classic Mac OS testing)" OFF)
+    if(WXPEGGED_TRACE)
+        target_sources(wxpegged PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/retro68/trace_retro68.cpp)
+        target_compile_definitions(wxpegged PRIVATE WXPEGGED_TRACE=1)
+    endif()
+
+    set(WXPEGGED_REZ_DEFINES)
+    if(CMAKE_SYSTEM_NAME STREQUAL "RetroPPC")
+        set(WXPEGGED_REZ_DEFINES WXPEGGED_PPC=1)
+    endif()
+
+    include(Retro68Application)
+    retro68_application(wxpegged
+        NAME "Pegged"
+        CREATOR WXPG
+        RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/retro68/wxpegged.r
+        REZ_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR}/retro68
+        REZ_DEFINES ${WXPEGGED_REZ_DEFINES})
+    return()
+endif()
 
 # Build the Qt port instead of the wxWidgets version. Android is Qt-only, so
 # building for Android (the qt-cmake toolchain sets ANDROID) forces it on.

@@ -22,8 +22,16 @@
     #include <wx/msw/helpchm.h>
 #endif
 
-#ifdef __WXMAC__
+#if defined(__WXRETRO68__)
+void ShowRetro68Help(wxWindow* parent);    // retro68/help_retro68.cpp
+#elif defined(__WXMAC__)
 extern "C" void ShowMacHelpBook(const char* anchor);
+#endif
+
+#ifdef WXPEGGED_TRACE
+#include "retro68/trace_retro68.h"   // classic Mac OS emulator test builds
+#else
+#define MTRACE(...) ((void)0)
 #endif
 
 // ---------------------------------------------------------------------------
@@ -198,12 +206,21 @@ wxIMPLEMENT_APP(PeggedApp);
 
 bool PeggedApp::OnInit()
 {
+#ifdef WXPEGGED_TRACE
+    PegTraceInit();
+#endif
+    MTRACE("OnInit, display depth %d", wxDisplayDepth());
     if (!wxApp::OnInit()) return false;
     SetAppName(wxT("Pegged"));
     SetVendorName(wxT("Pegged"));
     wxInitAllImageHandlers();
     auto* frame = new PeggedFrame();
+    MTRACE("main window constructed");
     frame->Show(true);
+    MTRACE("main window shown %dx%d", frame->GetSize().x, frame->GetSize().y);
+#ifdef WXPEGGED_TRACE
+    PegTraceAlive(frame);
+#endif
     return true;
 }
 
@@ -284,9 +301,13 @@ PeggedFrame::PeggedFrame()
     // On Windows, prefer the icon compiled into the .rc resources.
     SetIcon(wxIcon(wxT("100"))); // numeric id from pegged.rc
 #endif
+#ifndef __WXRETRO68__
+    // Classic Mac OS windows have no icons; the Finder's come from the
+    // application's resources (retro68/icons.r).
     wxIconBundle icons = LoadAppIcons();
     if (!icons.IsEmpty())
         SetIcons(icons);
+#endif
 
     // --- Menu bar ---------------------------------------------------------
     auto* menuBar = new wxMenuBar();
@@ -341,8 +362,32 @@ PeggedFrame::PeggedFrame()
     menuBar->Check(ID_PATTERN_FIRST + (int)patInt, true);
     m_board->SetPattern((PatternId)patInt);
 
+#if defined(__WXRETRO68__)
+    // Classic Macs commonly have 512x342, 640x480 or 832x624 screens: make
+    // the board fit on the screen, with the window's title bar below the
+    // menu bar, so it can always be moved and resized.
+    {
+        const wxRect avail = wxGetClientDisplayRect();
+        const wxSize frameExtra = GetSize() - GetClientSize();
+        int side = wxMin(avail.width  - frameExtra.x,
+                         avail.height - frameExtra.y - 8);
+        side = wxMax(wxMin(side, 360), 180);
+        SetMinClientSize(wxSize(180, 180));
+        SetClientSize(side, side);
+    }
+#else
     SetMinClientSize(wxSize(300, 300));
+#endif
     Centre();
+#if defined(__WXRETRO68__)
+    {
+        const wxRect avail = wxGetClientDisplayRect();
+        wxPoint pos = GetPosition();
+        pos.x = wxMax(pos.x, avail.x);
+        pos.y = wxMax(pos.y, avail.y);
+        Move(pos);
+    }
+#endif
     UpdateStatus();
 }
 
@@ -375,7 +420,10 @@ void PeggedFrame::OnUpdateUndo(wxUpdateUIEvent& evt)
 
 void PeggedFrame::OnHowTo(wxCommandEvent&)
 {
-#if defined(__WXMSW__)
+#if defined(__WXRETRO68__)
+    ShowRetro68Help(this);
+    return;
+#elif defined(__WXMSW__)
     // Search next to the .exe, in a share/doc sibling dir, and finally in
     // the bundle's Resources dir (wx maps that to the exe dir on Windows).
     wxFileName chm(wxStandardPaths::Get().GetExecutablePath());
