@@ -20,7 +20,7 @@ and runs unchanged on Linux (GTK), macOS (Cocoa), and Windows (MSW).
 
 - Mac OS 7.5.X (m68k)
 
-![](/screenshots/wxPegged_MacOS_m68k.png)
+![](/screenshots/wxpegged_MacOS_m68k.png)
 
 - Mac OS 9.X (ppc)
 
