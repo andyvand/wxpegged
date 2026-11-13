@@ -18,6 +18,14 @@ and runs unchanged on Linux (GTK), macOS (Cocoa), and Windows (MSW).
 
 ![](/screenshots/wxpegged_macOS.png)
 
+- Mac OS 7.5.X (m68k)
+
+![](/screenshots/wxPegged_MacOS_m68k.png)
+
+- Mac OS 9.X (ppc)
+
+![](/screenshots/wxPegged_MacOS_ppc.png)
+
 - Linux:
 
 ![](/screenshots/wxpegged_linux.png)
